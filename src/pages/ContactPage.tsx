@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, CheckCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function ContactPage() {
@@ -28,10 +28,11 @@ export default function ContactPage() {
           <div className="space-y-6">
             <div className="gradient-card rounded-lg border border-border p-6 space-y-5">
               <h2 className="font-heading font-bold text-foreground text-lg">Blazin Bonnets LTD</h2>
+              <p className="text-sm text-accent font-semibold">Viewings by appointment only</p>
               {[
-                { icon: Phone, label: '01234 567 890', href: 'tel:+441234567890' },
-                { icon: Mail, label: 'info@blazinbonnets.co.uk', href: 'mailto:info@blazinbonnets.co.uk' },
-                { icon: MapPin, label: 'Walsall, West Midlands, UK' },
+                { icon: Phone, label: '07436 624 578', href: 'tel:+447436624578' },
+                { icon: Mail, label: 'shaikhrashidul6@gmail.com', href: 'mailto:shaikhrashidul6@gmail.com' },
+                { icon: MapPin, label: '76 Lord Street, Walsall, WS1 4DP' },
               ].map(item => (
                 <div key={item.label} className="flex items-center gap-3">
                   <item.icon className="w-5 h-5 text-primary" />
@@ -42,23 +43,28 @@ export default function ContactPage() {
                   )}
                 </div>
               ))}
-              <div className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-primary mt-0.5" />
-                <div className="text-sm text-secondary-foreground">
-                  <p>Mon - Fri: 9:00 - 18:00</p>
-                  <p>Saturday: 10:00 - 16:00</p>
-                  <p>Sunday: By appointment</p>
-                </div>
-              </div>
+              <a
+                href="https://wa.me/447436624578?text=Hi%2C%20I%27m%20interested%20in%20one%20of%20your%20cars."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-green-600 text-white font-heading font-semibold rounded-md hover:bg-green-700 transition-all"
+              >
+                <MessageCircle className="w-5 h-5" /> WhatsApp Dealer
+              </a>
             </div>
 
-            {/* Map placeholder */}
-            <div className="aspect-video rounded-lg border border-border bg-muted flex items-center justify-center">
-              <div className="text-center text-muted-foreground">
-                <MapPin className="w-10 h-10 mx-auto mb-2 opacity-30" />
-                <p className="text-sm">Google Maps integration coming soon</p>
-                <p className="text-xs">Walsall, West Midlands</p>
-              </div>
+            {/* Google Maps */}
+            <div className="aspect-video rounded-lg border border-border overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2425.5!2d-1.9825!3d52.5855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870a1e2e3f4f5a7%3A0x1234567890abcdef!2s76%20Lord%20St%2C%20Walsall%20WS1%204DP%2C%20UK!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Blazin Bonnets LTD Location"
+              />
             </div>
           </div>
 

@@ -7,8 +7,7 @@ const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/cars', label: 'Browse Cars' },
   { to: '/sell-your-car', label: 'Sell Your Car' },
-  { to: '/about', label: 'About Us' },
-  { to: '/reviews', label: 'Reviews' },
+  { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -50,16 +49,18 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:+441234567890" className="flex items-center gap-2 text-sm text-accent font-heading font-semibold">
+          <a href="tel:+447436624578" className="flex items-center gap-2 text-sm text-accent font-heading font-semibold">
             <Phone className="w-4 h-4" />
-            01234 567 890
+            07436 624 578
           </a>
-          <Link
-            to="/contact"
+          <a
+            href="https://wa.me/447436624578?text=Hi%2C%20I%27m%20interested%20in%20one%20of%20your%20cars."
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold text-sm rounded-md hover:glow-red transition-all"
           >
-            Book Viewing
-          </Link>
+            WhatsApp Us
+          </a>
         </div>
 
         <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-foreground p-2">
@@ -87,7 +88,7 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <a href="tel:+441234567890" className="mt-3 flex items-center justify-center gap-2 px-5 py-3 bg-accent text-accent-foreground font-heading font-semibold text-sm rounded-md">
+              <a href="tel:+447436624578" className="mt-3 flex items-center justify-center gap-2 px-5 py-3 bg-accent text-accent-foreground font-heading font-semibold text-sm rounded-md">
                 <Phone className="w-4 h-4" /> Call Now
               </a>
             </div>

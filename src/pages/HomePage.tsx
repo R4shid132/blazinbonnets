@@ -1,22 +1,16 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, CheckCircle, Truck, Wrench, Star, ArrowRight, ChevronRight } from 'lucide-react';
+import { Shield, CheckCircle, Truck, Eye, ArrowRight, ChevronRight, MessageCircle } from 'lucide-react';
 import VehicleCard from '@/components/VehicleCard';
 import VehicleSearch from '@/components/VehicleSearch';
 import { vehicles } from '@/data/vehicles';
 import heroBg from '@/assets/hero-bg.jpg';
 
 const trustPoints = [
-  { icon: CheckCircle, title: '60-Point Inspection', desc: 'Every vehicle thoroughly checked' },
-  { icon: Shield, title: 'Quality Assured', desc: 'Hand-picked premium vehicles' },
-  { icon: Wrench, title: 'Extended Warranty', desc: 'Peace of mind protection' },
-  { icon: Truck, title: 'Nationwide Delivery', desc: 'Direct to your door' },
-];
-
-const testimonials = [
-  { name: 'James T.', car: 'BMW 420D M Sport', rating: 5, text: 'Absolutely brilliant experience. The car was exactly as described and the team made the whole process seamless.' },
-  { name: 'Sarah M.', car: 'Hyundai i10', rating: 5, text: 'Bought my first car from Blazin Bonnets. They were patient, helpful and gave me a great deal. Highly recommend!' },
-  { name: 'David K.', car: 'Audi A5 Sportback', rating: 5, text: 'Premium quality at a fair price. The inspection report was thorough and gave me total confidence in my purchase.' },
+  { icon: CheckCircle, title: 'Quality Checked', desc: 'Every vehicle thoroughly inspected before sale' },
+  { icon: Shield, title: 'Transparent Descriptions', desc: 'Honest, accurate vehicle information' },
+  { icon: Eye, title: 'Affordable Used Cars', desc: 'Competitive prices on quality vehicles' },
+  { icon: Truck, title: 'Flexible Viewings', desc: 'Appointment-only viewings at your convenience' },
 ];
 
 export default function HomePage() {
@@ -45,7 +39,7 @@ export default function HomePage() {
               <span className="text-gradient-gold">Bonnets</span>
             </h1>
             <p className="text-lg md:text-xl text-secondary-foreground max-w-xl mb-8 font-body font-light leading-relaxed">
-              Premium hand-picked vehicles inspected for quality and performance. Find your next car in Walsall, West Midlands.
+              Quality inspected vehicles at competitive prices. Find your next car in Walsall, West Midlands.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -54,12 +48,14 @@ export default function HomePage() {
               >
                 Browse Cars <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link
-                to="/sell-your-car"
-                className="inline-flex items-center gap-2 px-7 py-3.5 border border-accent text-accent font-heading font-semibold rounded-md hover:bg-accent hover:text-accent-foreground transition-all"
+              <a
+                href="https://wa.me/447436624578?text=Hi%2C%20I%27m%20interested%20in%20one%20of%20your%20cars."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-green-600 text-white font-heading font-semibold rounded-md hover:bg-green-700 transition-all"
               >
-                Sell Your Car
-              </Link>
+                <MessageCircle className="w-4 h-4" /> WhatsApp Dealer
+              </a>
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-secondary-foreground font-heading font-semibold rounded-md hover:border-primary hover:text-primary transition-all"
@@ -125,34 +121,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Reviews Placeholder */}
       <section className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12">
+        <div className="text-center">
           <p className="text-accent font-heading font-semibold text-xs tracking-widest uppercase mb-2">Customer Reviews</p>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">What Our Customers Say</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={t.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="gradient-card rounded-lg border border-border p-6"
-            >
-              <div className="flex gap-0.5 mb-3">
-                {Array.from({ length: t.rating }).map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-accent text-accent" />
-                ))}
-              </div>
-              <p className="text-sm text-secondary-foreground mb-4 italic">"{t.text}"</p>
-              <div>
-                <p className="font-heading font-semibold text-foreground text-sm">{t.name}</p>
-                <p className="text-xs text-muted-foreground">{t.car}</p>
-              </div>
-            </motion.div>
-          ))}
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">What Our Customers Say</h2>
+          <div className="gradient-card rounded-lg border border-border p-12 max-w-lg mx-auto">
+            <p className="text-muted-foreground">Customer reviews coming soon.</p>
+            <p className="text-sm text-muted-foreground mt-2">We're a new dealership building our reputation one happy customer at a time.</p>
+          </div>
         </div>
       </section>
 
@@ -173,12 +150,14 @@ export default function HomePage() {
             >
               Browse Vehicles <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-secondary-foreground font-heading font-semibold rounded-md hover:border-primary hover:text-primary transition-all"
+            <a
+              href="https://wa.me/447436624578?text=Hi%2C%20I%27m%20interested%20in%20one%20of%20your%20cars."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-secondary-foreground font-heading font-semibold rounded-md hover:border-green-500 hover:text-green-500 transition-all"
             >
-              Contact Dealer
-            </Link>
+              <MessageCircle className="w-4 h-4" /> WhatsApp Dealer
+            </a>
           </div>
         </div>
       </section>
