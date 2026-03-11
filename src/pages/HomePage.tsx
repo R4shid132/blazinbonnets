@@ -25,8 +25,12 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center gradient-hero overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(0_70%_50%/0.08),transparent_60%)]" />
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={heroBg} alt="Premium automotive showroom" className="w-full h-full object-cover" loading="eager" />
+          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(0_70%_50%/0.08),transparent_60%)]" />
+        </div>
         <div className="container mx-auto px-4 pt-20 pb-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
