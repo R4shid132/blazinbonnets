@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="text-gradient-gold">BONNETS</span>
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Premium hand-picked vehicles inspected for quality and performance. Serving Walsall, West Midlands and beyond.
+              Quality inspected vehicles at competitive prices. Independent used car dealer serving Walsall, West Midlands and beyond.
             </p>
           </div>
 
@@ -23,7 +23,6 @@ export default function Footer() {
                 { to: '/cars', label: 'Browse Cars' },
                 { to: '/sell-your-car', label: 'Sell Your Car' },
                 { to: '/about', label: 'About Us' },
-                { to: '/reviews', label: 'Customer Reviews' },
                 { to: '/contact', label: 'Contact Us' },
               ].map(link => (
                 <Link key={link.to} to={link.to} className="text-sm text-muted-foreground hover:text-primary transition-colors">
@@ -36,25 +35,24 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-semibold mb-4 text-foreground">Contact</h4>
             <div className="flex flex-col gap-3 text-sm text-muted-foreground">
-              <a href="tel:+441234567890" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Phone className="w-4 h-4 text-primary" /> 01234 567 890
+              <a href="tel:+447436624578" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Phone className="w-4 h-4 text-primary" /> 07436 624 578
               </a>
-              <a href="mailto:info@blazinbonnets.co.uk" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Mail className="w-4 h-4 text-primary" /> info@blazinbonnets.co.uk
+              <a href="mailto:shaikhrashidul6@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Mail className="w-4 h-4 text-primary" /> shaikhrashidul6@gmail.com
               </a>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-primary mt-0.5" />
-                <span>Walsall, West Midlands</span>
+                <span>76 Lord Street, Walsall, WS1 4DP</span>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold mb-4 text-foreground">Opening Hours</h4>
+            <h4 className="font-heading font-semibold mb-4 text-foreground">Viewings</h4>
             <div className="text-sm text-muted-foreground space-y-1">
-              <p>Mon - Fri: 9:00 - 18:00</p>
-              <p>Saturday: 10:00 - 16:00</p>
-              <p>Sunday: By appointment</p>
+              <p className="font-semibold text-accent">By appointment only</p>
+              <p>Call or WhatsApp to arrange a viewing at a time that suits you.</p>
             </div>
           </div>
         </div>

@@ -2,7 +2,6 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Gauge, Fuel, Cog, FileText, Shield, Phone, MessageCircle, ArrowLeft } from 'lucide-react';
 import { vehicles } from '@/data/vehicles';
-import FinanceCalculator from '@/components/FinanceCalculator';
 
 export default function VehicleDetailPage() {
   const { slug } = useParams();
@@ -29,6 +28,8 @@ export default function VehicleDetailPage() {
     { icon: FileText, label: 'Registration', value: vehicle.registration },
     { icon: Shield, label: 'Condition', value: vehicle.condition },
   ];
+
+  const whatsappMsg = encodeURIComponent(`Hi, I'm interested in the ${vehicle.name} (${vehicle.registration}).`);
 
   return (
     <div className="min-h-screen pt-20 md:pt-24">
@@ -64,9 +65,6 @@ export default function VehicleDetailPage() {
                 </div>
                 <div className="text-right">
                   <p className="text-3xl font-heading font-bold text-primary">£{vehicle.price.toLocaleString()}</p>
-                  {vehicle.financeFrom && (
-                    <p className="text-xs text-muted-foreground">Finance from £{vehicle.financeFrom}/mo</p>
-                  )}
                 </div>
               </div>
 
@@ -102,46 +100,28 @@ export default function VehicleDetailPage() {
 
           {/* Sidebar */}
           <div className="space-y-5">
-            {/* CTA panel */}
             <div className="gradient-card rounded-lg border border-border p-5 space-y-3 lg:sticky lg:top-24">
-              <Link
-                to="/contact"
+              <a
+                href={`https://wa.me/447436624578?text=${whatsappMsg}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-green-600 text-white font-heading font-semibold rounded-md hover:bg-green-700 transition-all"
+              >
+                <MessageCircle className="w-4 h-4" /> Enquire via WhatsApp
+              </a>
+              <a
+                href="tel:+447436624578"
                 className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-primary-foreground font-heading font-semibold rounded-md hover:glow-red transition-all"
               >
-                Book Viewing
-              </Link>
-              <Link
-                to="/contact"
-                className="flex items-center justify-center gap-2 w-full py-3 border border-accent text-accent font-heading font-semibold rounded-md hover:bg-accent hover:text-accent-foreground transition-all"
-              >
-                Reserve Vehicle
-              </Link>
+                <Phone className="w-4 h-4" /> Call Dealer
+              </a>
               <Link
                 to="/contact"
                 className="flex items-center justify-center gap-2 w-full py-3 border border-border text-secondary-foreground font-heading font-semibold rounded-md hover:border-primary hover:text-primary transition-all"
               >
-                Enquire Now
+                Book Viewing
               </Link>
-              <div className="flex gap-2 pt-2">
-                <a
-                  href="tel:+441234567890"
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-muted text-foreground text-sm font-heading font-semibold rounded-md hover:bg-primary hover:text-primary-foreground transition-all"
-                >
-                  <Phone className="w-4 h-4" /> Call
-                </a>
-                <a
-                  href="https://wa.me/441234567890"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-muted text-foreground text-sm font-heading font-semibold rounded-md hover:bg-green-600 hover:text-primary-foreground transition-all"
-                >
-                  <MessageCircle className="w-4 h-4" /> WhatsApp
-                </a>
-              </div>
             </div>
-
-            {/* Finance Calculator */}
-            <FinanceCalculator vehiclePrice={vehicle.price} />
           </div>
         </div>
       </div>
