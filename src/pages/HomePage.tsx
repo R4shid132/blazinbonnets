@@ -5,8 +5,6 @@ import VehicleCard from '@/components/VehicleCard';
 import VehicleSearch from '@/components/VehicleSearch';
 import { vehicles } from '@/data/vehicles';
 import heroBg from '@/assets/hero-bg.jpg';
-import VehicleSearch from '@/components/VehicleSearch';
-import { vehicles } from '@/data/vehicles';
 
 const trustPoints = [
   { icon: CheckCircle, title: '60-Point Inspection', desc: 'Every vehicle thoroughly checked' },
