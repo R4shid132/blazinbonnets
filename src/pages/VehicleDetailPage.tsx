@@ -8,6 +8,7 @@ import UnlockOfferModal from '@/components/UnlockOfferModal';
 export default function VehicleDetailPage() {
   const { slug } = useParams();
   const vehicle = vehicles.find(v => v.slug === slug);
+  const [offerOpen, setOfferOpen] = useState(false);
 
   if (!vehicle) {
     return (
