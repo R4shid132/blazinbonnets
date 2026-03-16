@@ -87,7 +87,7 @@ export default function InventoryPage() {
 
         {filtered.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {filtered.map((v, i) => <VehicleCard key={v.id} vehicle={v} index={i} />)}
+            {filtered.map((v, i) => <VehicleCard key={v.id} vehicle={v} index={i} featured={i === 0} />)}
           </div>
         ) : (
           <div className="text-center py-20">

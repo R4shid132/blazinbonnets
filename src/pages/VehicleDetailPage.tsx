@@ -134,6 +134,7 @@ export default function VehicleDetailPage() {
           </div>
         </div>
       </div>
+      <UnlockOfferModal vehicleName={vehicle.name} isOpen={offerOpen} onClose={() => setOfferOpen(false)} />
     </div>
   );
 }
