@@ -66,8 +66,14 @@ export default function VehicleDetailPage() {
                   <h1 className="text-2xl md:text-3xl font-heading font-bold text-foreground">{vehicle.name}</h1>
                   <p className="text-sm text-muted-foreground">{vehicle.registration}</p>
                 </div>
-                <div className="text-right">
+                <div className="text-right space-y-2">
                   <p className="text-3xl font-heading font-bold text-primary">£{vehicle.price.toLocaleString()}</p>
+                  <button
+                    onClick={() => setOfferOpen(true)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-heading font-semibold bg-accent/20 text-accent border border-accent/30 rounded-md hover:bg-accent hover:text-accent-foreground transition-all"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" /> Unlock Exclusive Offer
+                  </button>
                 </div>
               </div>
 
