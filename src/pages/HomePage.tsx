@@ -7,11 +7,11 @@ import { vehicles } from '@/data/vehicles';
 import heroBg from '@/assets/hero-bg.jpg';
 
 const trustPoints = [
-  { icon: CheckCircle, title: 'Quality Checked', desc: 'Every vehicle thoroughly inspected before sale' },
-  { icon: Shield, title: 'Transparent Descriptions', desc: 'Honest, accurate vehicle information' },
-  { icon: Eye, title: 'Affordable Used Cars', desc: 'Competitive prices on quality vehicles' },
-  { icon: Truck, title: 'Flexible Viewings', desc: 'Appointment-only viewings at your convenience' },
-];
+{ icon: CheckCircle, title: 'Quality Checked', desc: 'Every vehicle thoroughly inspected before sale' },
+{ icon: Shield, title: 'Transparent Descriptions', desc: 'Honest, accurate vehicle information' },
+{ icon: Eye, title: 'Affordable Used Cars', desc: 'Competitive prices on quality vehicles' },
+{ icon: Truck, title: 'Flexible Viewings', desc: 'Appointment-only viewings at your convenience' }];
+
 
 export default function HomePage() {
   return (
@@ -28,8 +28,8 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
+            className="max-w-3xl">
+            
             <p className="text-accent font-heading font-semibold text-sm tracking-widest uppercase mb-4">
               Premium Used Cars · Walsall
             </p>
@@ -44,22 +44,22 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 to="/cars"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-heading font-semibold rounded-md hover:glow-red transition-all"
-              >
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-heading font-semibold rounded-md hover:glow-red transition-all">
+                
                 Browse Cars <ArrowRight className="w-4 h-4" />
               </Link>
               <a
                 href="https://wa.me/447436624578?text=Hi%2C%20I%27m%20interested%20in%20one%20of%20your%20cars."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-green-600 text-white font-heading font-semibold rounded-md hover:bg-green-700 transition-all"
-              >
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-green-600 text-white font-heading font-semibold rounded-md hover:bg-green-700 transition-all">
+                
                 <MessageCircle className="w-4 h-4" /> WhatsApp Dealer
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-secondary-foreground font-heading font-semibold rounded-md hover:border-primary hover:text-primary transition-all"
-              >
+                className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-secondary-foreground font-heading font-semibold rounded-md hover:border-primary hover:text-primary transition-all">
+                
                 Book Viewing
               </Link>
             </div>
@@ -76,7 +76,7 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-20">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <p className="text-accent font-heading font-semibold text-xs tracking-widest uppercase mb-2">Handpicked Selection</p>
+            <p className="text-accent font-heading font-semibold tracking-widest uppercase mb-2 text-center text-lg">Handpicked Selection</p>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">Featured Vehicles</h2>
           </div>
           <Link to="/cars" className="hidden md:flex items-center gap-1 text-sm text-primary font-heading font-semibold hover:gap-2 transition-all">
@@ -84,9 +84,9 @@ export default function HomePage() {
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {vehicles.map((v, i) => (
-            <VehicleCard key={v.id} vehicle={v} index={i} />
-          ))}
+          {vehicles.map((v, i) =>
+          <VehicleCard key={v.id} vehicle={v} index={i} />
+          )}
         </div>
         <div className="mt-8 text-center md:hidden">
           <Link to="/cars" className="inline-flex items-center gap-1 text-sm text-primary font-heading font-semibold">
@@ -103,20 +103,20 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">Quality You Can Trust</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {trustPoints.map((tp, i) => (
-              <motion.div
-                key={tp.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="gradient-card rounded-lg border border-border p-6 text-center hover:border-primary/40 transition-colors"
-              >
+            {trustPoints.map((tp, i) =>
+            <motion.div
+              key={tp.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="gradient-card rounded-lg border border-border p-6 text-center hover:border-primary/40 transition-colors">
+              
                 <tp.icon className="w-10 h-10 text-primary mx-auto mb-4" />
                 <h3 className="font-heading font-bold text-foreground mb-2">{tp.title}</h3>
                 <p className="text-sm text-muted-foreground">{tp.desc}</p>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -146,21 +146,21 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               to="/cars"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-heading font-semibold rounded-md hover:glow-red transition-all"
-            >
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-heading font-semibold rounded-md hover:glow-red transition-all">
+              
               Browse Vehicles <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href="https://wa.me/447436624578?text=Hi%2C%20I%27m%20interested%20in%20one%20of%20your%20cars."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-secondary-foreground font-heading font-semibold rounded-md hover:border-green-500 hover:text-green-500 transition-all"
-            >
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-secondary-foreground font-heading font-semibold rounded-md hover:border-green-500 hover:text-green-500 transition-all">
+              
               <MessageCircle className="w-4 h-4" /> WhatsApp Dealer
             </a>
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 }
