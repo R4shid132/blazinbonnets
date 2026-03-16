@@ -76,8 +76,8 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-20">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <p className="text-accent font-heading font-semibold tracking-widest uppercase mb-2 text-center text-lg">Handpicked Selection</p>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">Featured Vehicles</h2>
+            <p className="font-heading font-semibold tracking-widest uppercase mb-2 text-center text-xl text-primary">Handpicked Selection</p>
+            <h2 className="text-3xl font-heading font-bold text-accent md:text-sm">Featured Vehicles</h2>
           </div>
           <Link to="/cars" className="hidden md:flex items-center gap-1 text-sm text-primary font-heading font-semibold hover:gap-2 transition-all">
             View All <ChevronRight className="w-4 h-4" />
