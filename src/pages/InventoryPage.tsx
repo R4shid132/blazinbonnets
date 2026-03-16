@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import VehicleCard from '@/components/VehicleCard';
+import BodyTypeChips from '@/components/BodyTypeChips';
 import { vehicles, makes, fuelTypes, transmissions, bodyTypes } from '@/data/vehicles';
 
 export default function InventoryPage() {
