@@ -85,7 +85,7 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {vehicles.map((v, i) =>
-          <VehicleCard key={v.id} vehicle={v} index={i} />
+          <VehicleCard key={v.id} vehicle={v} index={i} featured={i === 0} />
           )}
         </div>
         <div className="mt-8 text-center md:hidden">

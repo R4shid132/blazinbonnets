@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import VehicleCard from '@/components/VehicleCard';
+import BodyTypeChips from '@/components/BodyTypeChips';
 import { vehicles, makes, fuelTypes, transmissions, bodyTypes } from '@/data/vehicles';
 
 export default function InventoryPage() {
@@ -40,8 +41,8 @@ export default function InventoryPage() {
         </motion.div>
 
         {/* Filters */}
-        <div className="gradient-card rounded-lg border border-border p-4 mb-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+        <div className="gradient-card rounded-lg border border-border p-4 mb-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
             <select value={filters.make} onChange={e => setFilters(f => ({...f, make: e.target.value}))} className={selectClass}>
               <option value="">All Makes</option>
               {makes.map(m => <option key={m}>{m}</option>)}
@@ -53,10 +54,6 @@ export default function InventoryPage() {
             <select value={filters.transmission} onChange={e => setFilters(f => ({...f, transmission: e.target.value}))} className={selectClass}>
               <option value="">Transmission</option>
               {transmissions.map(t => <option key={t}>{t}</option>)}
-            </select>
-            <select value={filters.bodyType} onChange={e => setFilters(f => ({...f, bodyType: e.target.value}))} className={selectClass}>
-              <option value="">Body Type</option>
-              {bodyTypes.map(b => <option key={b}>{b}</option>)}
             </select>
             <select value={filters.priceMax} onChange={e => setFilters(f => ({...f, priceMax: e.target.value}))} className={selectClass}>
               <option value="">Max Price</option>
@@ -79,13 +76,18 @@ export default function InventoryPage() {
               Clear Filters
             </button>
           </div>
+          <BodyTypeChips
+            bodyTypes={bodyTypes}
+            active={filters.bodyType}
+            onChange={(val) => setFilters(f => ({ ...f, bodyType: val }))}
+          />
         </div>
 
         <p className="text-sm text-muted-foreground mb-6">{filtered.length} vehicle{filtered.length !== 1 ? 's' : ''} found</p>
 
         {filtered.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {filtered.map((v, i) => <VehicleCard key={v.id} vehicle={v} index={i} />)}
+            {filtered.map((v, i) => <VehicleCard key={v.id} vehicle={v} index={i} featured={i === 0} />)}
           </div>
         ) : (
           <div className="text-center py-20">

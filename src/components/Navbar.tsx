@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useGarageCount } from '@/hooks/useGarage';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const garageCount = useGarageCount();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -25,7 +27,7 @@ export default function Navbar() {
   useEffect(() => setIsOpen(false), [location]);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-luxury border-b border-border' : 'bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/70 backdrop-blur-xl shadow-luxury border-b border-border/50' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center gap-2">
           <span className="text-xl md:text-2xl font-heading font-bold tracking-tight">
@@ -49,6 +51,14 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
+          <Link to="/cars" className="relative p-2 text-muted-foreground hover:text-primary transition-colors">
+            <Heart className="w-5 h-5" />
+            {garageCount > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-primary text-primary-foreground text-[10px] font-bold rounded-full flex items-center justify-center">
+                {garageCount}
+              </span>
+            )}
+          </Link>
           <a href="tel:+447436624578" className="flex items-center gap-2 text-sm text-accent font-heading font-semibold">
             <Phone className="w-4 h-4" />
             07436 624 578

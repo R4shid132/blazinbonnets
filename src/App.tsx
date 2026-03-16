@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import TestDriveFAB from "@/components/TestDriveFAB";
 import HomePage from "./pages/HomePage";
 import InventoryPage from "./pages/InventoryPage";
 import VehicleDetailPage from "./pages/VehicleDetailPage";
@@ -34,6 +35,7 @@ const App = () => (
         </Routes>
         <Footer />
         <WhatsAppButton />
+        <TestDriveFAB />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
