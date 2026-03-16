@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, Gauge, Fuel, Cog, FileText, Shield, Phone, MessageCircle, ArrowLeft } from 'lucide-react';
+import { Calendar, Gauge, Fuel, Cog, FileText, Shield, Phone, MessageCircle, ArrowLeft, Sparkles } from 'lucide-react';
 import { vehicles } from '@/data/vehicles';
+import UnlockOfferModal from '@/components/UnlockOfferModal';
 
 export default function VehicleDetailPage() {
   const { slug } = useParams();
