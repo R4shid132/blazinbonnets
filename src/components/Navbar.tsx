@@ -16,6 +16,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const garageCount = useGarageCount();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
