@@ -17,6 +17,7 @@ interface MediaCarouselProps {
   showThumbnails?: boolean;
   showArrows?: boolean;
   rounded?: string;
+  fit?: 'cover' | 'contain';
 }
 
 export default function MediaCarousel({
@@ -28,6 +29,7 @@ export default function MediaCarousel({
   showThumbnails = false,
   showArrows = true,
   rounded = 'rounded-lg',
+  fit = 'cover',
 }: MediaCarouselProps) {
   const [index, setIndex] = useState(0);
   const [isHover, setIsHover] = useState(false);
