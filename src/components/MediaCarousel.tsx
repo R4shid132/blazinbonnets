@@ -67,6 +67,14 @@ export default function MediaCarousel({
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
         >
+          {fit === 'contain' && current.type === 'image' && (
+            <img
+              src={current.src}
+              alt=""
+              aria-hidden
+              className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60"
+            />
+          )}
           {current.type === 'video' ? (
             <video
               src={current.src}
@@ -74,14 +82,15 @@ export default function MediaCarousel({
               controls
               playsInline
               preload="metadata"
-              className="w-full h-full object-cover bg-black"
+              className={`relative w-full h-full ${fit === 'contain' ? 'object-contain' : 'object-cover'} bg-black`}
             />
           ) : (
             <img
               src={current.src}
               alt={`${alt} – photo ${index + 1}`}
               loading="lazy"
-              className="w-full h-full object-cover"
+              decoding="async"
+              className={`relative w-full h-full ${fit === 'contain' ? 'object-contain' : 'object-cover'}`}
             />
           )}
         </motion.div>
