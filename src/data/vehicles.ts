@@ -38,7 +38,12 @@ export const vehicles: Vehicle[] = [
     motExpiry: 'January 2027',
     description: 'Reliable and economical Hyundai i10 ideal for city driving with excellent fuel efficiency. Perfect first car or daily runabout with low insurance costs and proven reliability. Well-maintained example with full service history available.',
     price: 3995,
-    images: [],
+    images: [
+      '/vehicles/hyundai-i10/front.jpg',
+      '/vehicles/hyundai-i10/side-right.jpg',
+      '/vehicles/hyundai-i10/rear.jpg',
+      '/vehicles/hyundai-i10/side-left.jpg',
+    ],
     status: 'available',
     badges: ['Fully Inspected'],
     financeFrom: 89,
