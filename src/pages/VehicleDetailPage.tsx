@@ -66,6 +66,7 @@ export default function VehicleDetailPage() {
                       alt={vehicle.name}
                       aspect="aspect-[16/9]"
                       intervalMs={4500}
+                      fit="contain"
                     />
                   );
                 })()}
