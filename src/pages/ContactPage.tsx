@@ -31,7 +31,7 @@ export default function ContactPage() {
               <p className="text-sm text-accent font-semibold">Viewings by appointment only</p>
               {[
                 { icon: Phone, label: '07436 624 578', href: 'tel:+447436624578' },
-                { icon: Mail, label: 'shaikhrashidul6@gmail.com', href: 'mailto:shaikhrashidul6@gmail.com' },
+                { icon: Mail, label: 'admin@blazinbonnets.co.uk', href: 'mailto:admin@blazinbonnets.co.uk' },
                 { icon: MapPin, label: '76 Lord Street, Walsall, WS1 4DP' },
               ].map(item => (
                 <div key={item.label} className="flex items-center gap-3">

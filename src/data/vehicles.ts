@@ -18,6 +18,7 @@ export interface Vehicle {
   status: 'available' | 'reserved' | 'sold';
   badges: string[];
   financeFrom?: number;
+  videos?: string[];
 }
 
 export const vehicles: Vehicle[] = [
@@ -41,6 +42,7 @@ export const vehicles: Vehicle[] = [
     status: 'available',
     badges: ['Fully Inspected'],
     financeFrom: 89,
+    videos: ['/vehicles/hyundai-i10/showcase.mp4'],
   },
   {
     id: '2',

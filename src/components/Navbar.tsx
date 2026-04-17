@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGarageCount } from '@/hooks/useGarage';
+import logo from '@/assets/blazin-bonnets-logo.jpeg';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -29,7 +30,12 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/70 backdrop-blur-xl shadow-luxury border-b border-border/50' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2 md:gap-3 group">
+          <img
+            src={logo}
+            alt="Blazin Bonnets LTD logo"
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover ring-2 ring-accent/50 shadow-luxury group-hover:ring-primary/60 transition-all"
+          />
           <span className="text-xl md:text-2xl font-heading font-bold tracking-tight">
             <span className="text-primary">BLAZIN</span>{' '}
             <span className="text-gradient-gold">BONNETS</span>

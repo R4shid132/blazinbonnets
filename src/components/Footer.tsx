@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import logo from '@/assets/blazin-bonnets-logo.jpeg';
 
 export default function Footer() {
   return (
@@ -7,10 +8,13 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-heading font-bold mb-4">
-              <span className="text-primary">BLAZIN</span>{' '}
-              <span className="text-gradient-gold">BONNETS</span>
-            </h3>
+            <Link to="/" className="inline-flex items-center gap-3 mb-4">
+              <img src={logo} alt="Blazin Bonnets LTD logo" className="w-14 h-14 rounded-full object-cover ring-2 ring-accent/40 shadow-luxury" loading="lazy" />
+              <h3 className="text-lg font-heading font-bold leading-tight">
+                <span className="text-primary">BLAZIN</span>{' '}
+                <span className="text-gradient-gold">BONNETS</span>
+              </h3>
+            </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Quality inspected vehicles at competitive prices. Independent used car dealer serving Walsall, West Midlands and beyond.
             </p>
@@ -38,8 +42,8 @@ export default function Footer() {
               <a href="tel:+447436624578" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4 text-primary" /> 07436 624 578
               </a>
-              <a href="mailto:shaikhrashidul6@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Mail className="w-4 h-4 text-primary" /> shaikhrashidul6@gmail.com
+              <a href="mailto:admin@blazinbonnets.co.uk" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Mail className="w-4 h-4 text-primary" /> admin@blazinbonnets.co.uk
               </a>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-primary mt-0.5" />
