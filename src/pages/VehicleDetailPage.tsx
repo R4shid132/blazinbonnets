@@ -45,13 +45,56 @@ export default function VehicleDetailPage() {
           {/* Main content */}
           <div className="lg:col-span-2 space-y-6">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              {/* Image */}
-              <div className="aspect-[16/9] bg-muted rounded-lg border border-border flex items-center justify-center mb-6">
-                <div className="text-center text-muted-foreground">
-                  <Gauge className="w-16 h-16 mx-auto mb-2 opacity-30" />
-                  <p className="text-sm opacity-50">{vehicle.name}</p>
-                </div>
+              {/* Hero media */}
+              <div className="aspect-[16/9] bg-muted rounded-lg border border-border overflow-hidden mb-4">
+                {vehicle.videos && vehicle.videos.length > 0 ? (
+                  <video
+                    src={vehicle.videos[0]}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover bg-black"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                    <div className="text-center">
+                      <Gauge className="w-16 h-16 mx-auto mb-2 opacity-30" />
+                      <p className="text-sm opacity-50">{vehicle.name}</p>
+                    </div>
+                  </div>
+                )}
               </div>
+
+              {/* Additional videos */}
+              {vehicle.videos && vehicle.videos.length > 1 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                  {vehicle.videos.slice(1).map((src, i) => (
+                    <video
+                      key={i}
+                      src={src}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="aspect-video w-full rounded-md border border-border bg-black object-cover"
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Image gallery */}
+              {vehicle.images && vehicle.images.length > 0 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                  {vehicle.images.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`${vehicle.name} photo ${i + 1}`}
+                      loading="lazy"
+                      className="aspect-video w-full rounded-md border border-border object-cover"
+                    />
+                  ))}
+                </div>
+              )}
 
               {/* Header */}
               <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
