@@ -2,15 +2,39 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, MessageCircle, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
+import { submitLead, LeadType } from '@/lib/leads';
+
+const TYPE_MAP: Record<string, LeadType> = {
+  general: 'contact',
+  viewing: 'test_drive',
+  finance: 'finance',
+  sell: 'sell_car',
+};
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', enquiryType: 'general', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast.success('Enquiry submitted! We\'ll be in touch soon.');
+    setLoading(true);
+    try {
+      await submitLead({
+        type: TYPE_MAP[form.enquiryType] ?? 'contact',
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        message: form.message,
+        source: 'contact_page',
+      });
+      setSubmitted(true);
+      toast.success('Enquiry submitted! We\'ll be in touch soon.');
+    } catch (err: any) {
+      toast.error(err.message ?? 'Something went wrong');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass = "w-full bg-muted text-foreground text-sm rounded-md px-4 py-3 border border-border focus:border-primary focus:outline-none font-body placeholder:text-muted-foreground";
@@ -89,8 +113,8 @@ export default function ContactPage() {
                   <option value="sell">Sell My Car</option>
                 </select>
                 <textarea required rows={4} placeholder="Your message..." value={form.message} onChange={e => setForm(f => ({...f, message: e.target.value}))} className={inputClass + ' resize-none'} />
-                <button type="submit" className="w-full py-3.5 bg-primary text-primary-foreground font-heading font-semibold rounded-md hover:glow-red transition-all">
-                  Send Enquiry
+                <button disabled={loading} type="submit" className="w-full py-3.5 bg-primary text-primary-foreground font-heading font-semibold rounded-md hover:glow-red transition-all disabled:opacity-60">
+                  {loading ? 'Sending...' : 'Send Enquiry'}
                 </button>
               </form>
             )}
