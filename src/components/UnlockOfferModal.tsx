@@ -1,19 +1,40 @@
 import { useState } from 'react';
 import { X, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'sonner';
+import { submitLead } from '@/lib/leads';
 
 interface Props {
   vehicleName: string;
+  vehicleId?: string;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function UnlockOfferModal({ vehicleName, isOpen, onClose }: Props) {
+export default function UnlockOfferModal({ vehicleName, vehicleId, isOpen, onClose }: Props) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ name: '', phone: '', email: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      await submitLead({
+        type: 'offer_unlock',
+        name: form.name,
+        phone: form.phone,
+        email: form.email || undefined,
+        vehicle_id: vehicleId,
+        vehicle_name: vehicleName,
+        source: 'unlock_offer_modal',
+      });
+      setSubmitted(true);
+    } catch (err: any) {
+      toast.error(err.message ?? 'Something went wrong');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -47,11 +68,11 @@ export default function UnlockOfferModal({ vehicleName, isOpen, onClose }: Props
                   Get a special deal on the <span className="text-foreground font-semibold">{vehicleName}</span>. Drop your details and we'll send you an exclusive price.
                 </p>
                 <form onSubmit={handleSubmit} className="space-y-3">
-                  <input required type="text" placeholder="Your Name" className="w-full bg-muted text-foreground text-sm rounded-md px-3 py-2.5 border border-border focus:border-primary focus:outline-none" />
-                  <input required type="tel" placeholder="Phone Number" className="w-full bg-muted text-foreground text-sm rounded-md px-3 py-2.5 border border-border focus:border-primary focus:outline-none" />
-                  <input type="email" placeholder="Email (optional)" className="w-full bg-muted text-foreground text-sm rounded-md px-3 py-2.5 border border-border focus:border-primary focus:outline-none" />
-                  <button type="submit" className="w-full py-3 bg-accent text-accent-foreground font-heading font-semibold rounded-md hover:glow-gold transition-all">
-                    Unlock My Offer
+                  <input required value={form.name} onChange={e => setForm(f => ({...f, name: e.target.value}))} type="text" placeholder="Your Name" className="w-full bg-muted text-foreground text-sm rounded-md px-3 py-2.5 border border-border focus:border-primary focus:outline-none" />
+                  <input required value={form.phone} onChange={e => setForm(f => ({...f, phone: e.target.value}))} type="tel" placeholder="Phone Number" className="w-full bg-muted text-foreground text-sm rounded-md px-3 py-2.5 border border-border focus:border-primary focus:outline-none" />
+                  <input value={form.email} onChange={e => setForm(f => ({...f, email: e.target.value}))} type="email" placeholder="Email (optional)" className="w-full bg-muted text-foreground text-sm rounded-md px-3 py-2.5 border border-border focus:border-primary focus:outline-none" />
+                  <button disabled={loading} type="submit" className="w-full py-3 bg-accent text-accent-foreground font-heading font-semibold rounded-md hover:glow-gold transition-all disabled:opacity-60">
+                    {loading ? 'Unlocking...' : 'Unlock My Offer'}
                   </button>
                 </form>
               </>

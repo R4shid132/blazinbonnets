@@ -2,15 +2,34 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Upload, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
+import { submitLead } from '@/lib/leads';
 
 export default function SellYourCarPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', make: '', model: '', year: '', mileage: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast.success('Valuation request submitted! We\'ll be in touch soon.');
+    setLoading(true);
+    try {
+      await submitLead({
+        type: 'sell_car',
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        vehicle_name: `${form.make} ${form.model} ${form.year}`.trim(),
+        message: `Mileage: ${form.mileage}`,
+        source: 'sell_your_car',
+        metadata: { make: form.make, model: form.model, year: form.year, mileage: form.mileage },
+      });
+      setSubmitted(true);
+      toast.success('Valuation request submitted! We\'ll be in touch soon.');
+    } catch (err: any) {
+      toast.error(err.message ?? 'Something went wrong');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass = "w-full bg-muted text-foreground text-sm rounded-md px-4 py-3 border border-border focus:border-primary focus:outline-none font-body placeholder:text-muted-foreground";
@@ -60,9 +79,10 @@ export default function SellYourCarPage() {
 
             <button
               type="submit"
-              className="w-full py-3.5 bg-primary text-primary-foreground font-heading font-semibold rounded-md hover:glow-red transition-all"
+              disabled={loading}
+              className="w-full py-3.5 bg-primary text-primary-foreground font-heading font-semibold rounded-md hover:glow-red transition-all disabled:opacity-60"
             >
-              Get Vehicle Valuation
+              {loading ? 'Sending...' : 'Get Vehicle Valuation'}
             </button>
           </form>
         </div>

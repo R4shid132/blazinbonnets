@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import TestDriveFAB from "@/components/TestDriveFAB";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 import HomePage from "./pages/HomePage";
 import InventoryPage from "./pages/InventoryPage";
 import VehicleDetailPage from "./pages/VehicleDetailPage";
@@ -13,6 +14,8 @@ import AboutPage from "./pages/AboutPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import SellYourCarPage from "./pages/SellYourCarPage";
 import ContactPage from "./pages/ContactPage";
+import AuthPage from "./pages/AuthPage";
+import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,11 +34,14 @@ const App = () => (
           <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/sell-your-car" element={<SellYourCarPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
         <WhatsAppButton />
         <TestDriveFAB />
+        <StickyMobileCTA />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
