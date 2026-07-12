@@ -24,7 +24,7 @@ export async function submitLead(input: LeadInput) {
     vehicle_id: input.vehicle_id ?? null,
     vehicle_name: input.vehicle_name ?? null,
     source: input.source ?? (typeof window !== 'undefined' ? window.location.pathname : null),
-    metadata: input.metadata ?? {},
+    metadata: (input.metadata ?? {}) as any,
   });
   if (error) throw error;
 }
